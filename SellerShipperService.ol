@@ -14,7 +14,10 @@ service SellerService {
     }
 
     outputPort SellerShipper {
-
+        location: "socket://localhost:8001"
+        protocol: http { format = "json" }
+        interfaces: SellerShipperInterface
+    }
     }
     inputPort ShipperBuyer {
         location: "socket://localhost:8001"
@@ -30,7 +33,12 @@ service SellerService {
 
     main {
         [ask(product)]{
-            Quote@Buyer(10)
+            Quote@Buyer(15)
+            [accept(response)]{
+                if (response == true) {
+                    Order@SellerShipper()
+                }
+            }
         }
 
     } 

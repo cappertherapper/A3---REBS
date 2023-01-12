@@ -11,7 +11,7 @@ type AcceptRequest: void {
 }
 
 type AcceptResponse: void {
-    order: int
+    product: bool
 }
 
 type RejectRequest: void {
@@ -35,6 +35,6 @@ interface BuyerShipperInterface {
 interface BuyerSellerInterface {
     RequestResponse:
         ask( AskRequest )( AskResponse ),
-        accept( AcceptRequest )( bool ),
+        accept( AcceptRequest )( AcceptResponse ),
         reject( RejectRequest )( bool )
 }
