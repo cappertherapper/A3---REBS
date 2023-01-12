@@ -2,6 +2,10 @@ type AskRequest: void {
     product: string
 }
 
+type OrderRequest: void {
+    product: string
+}
+
 //type AskResponse: void {
 //  product: string
 //}
@@ -27,6 +31,10 @@ type RejectRequest: void {
 //}
 
 
+interface SellerShipperInterface {
+    OneWay:
+        order(OrderRequest)
+}
 
 interface SellerInterface {
     OneWay:

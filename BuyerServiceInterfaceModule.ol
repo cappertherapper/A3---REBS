@@ -8,17 +8,14 @@ type QuoteResponse: void {
 type OrderRequest: void {
 
 }
-type OrderResponse: void {
+type ResponseDetails: void {
+    invoice: string
+}
 
-}
-interface SellerShipperInterface {
-    RequestResponse:
-        order(OrderRequest)(OrderResponse)
-}
 
 interface BuyerShipperInterface {
-    RequestResponse:
-        details(Details)(d)
+    OneWay:
+        details(ResponseDetails)
 }
 
 interface BuyerSellerInterface {

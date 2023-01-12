@@ -4,6 +4,8 @@ from BuyerServiceInterfaceModule import BuyerShipperInterface, BuyerSellerInterf
 
 include "console.iol"
 
+
+
 service SellerService {
     execution{ single }
 
@@ -11,6 +13,11 @@ service SellerService {
         location: "socket://localhost:8002"
         protocol: http { format = "json" }
         interfaces: BuyerSellerInterface
+    }
+    outputPort SellerShipper {
+        location: "socket://localhost:8010"
+        protocol: http { format = "json" }
+        interfaces: SellerShipperInterface
     }
 
     inputPort BuyerSeller {
@@ -24,12 +31,8 @@ service SellerService {
     main {
         [ask(product)]{
             quote@Buyer(15)
-            [accept(response)]{
-                if (response == true) {
-                    Order@SellerShipper()
-                }
-            }
+            [accept(response)]{Order@SellerShipper(response)}
+            [reject(response)]{}
         }
-
     } 
 }
