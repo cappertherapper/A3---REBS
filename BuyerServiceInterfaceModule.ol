@@ -1,31 +1,20 @@
-type AskRequest: void {
-    product: string
-}
 
-type AskResponse: void {
-    product: string
+type QuoteRequest: void {
+    item: string
 }
-
-type AcceptRequest: void {
-    price: int
+type QuoteResponse: void {
+    price: int 
 }
+type OrderRequest: void {
 
-type AcceptResponse: void {
-    product: bool
 }
+type OrderResponse: void {
 
-type RejectRequest: void {
-    price: int
 }
-
-type DetailsRequest: void { //i tvivl
-    invoice: int
+interface SellerShipperInterface {
+    RequestResponse:
+        order(OrderRequest)(OrderResponse)
 }
-
-type DetailsResponse: void {
-    
-}
-
 
 interface BuyerShipperInterface {
     RequestResponse:
@@ -33,8 +22,6 @@ interface BuyerShipperInterface {
 }
 
 interface BuyerSellerInterface {
-    RequestResponse:
-        ask( AskRequest )( AskResponse ),
-        accept( AcceptRequest )( AcceptResponse ),
-        reject( RejectRequest )( bool )
+    OneWay:
+        quote (QuoteResponse)
 }
