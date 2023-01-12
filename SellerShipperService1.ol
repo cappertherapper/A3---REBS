@@ -5,8 +5,8 @@ from BuyerServiceInterfaceModule import BuyerShipperInterface, BuyerSellerInterf
 include "console.iol"
 
 
-service SellerService {
-    execution{ single }
+service SellerService1 {
+    execution{ concurrent }
 // 8002 - 8010 - 8000
     outputPort Buyer {
         location: "socket://localhost:8002"
