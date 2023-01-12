@@ -24,19 +24,20 @@ service BuyerService {
         protocol: http { format = "json" }
         interfaces: BuyerSellerInterface
     }
-}
 
-main {
-    ask@Seller("chips")
-        {[quote(price)]{
-            if (price <20) {
-                println@Console( "price lower than 20")()
-                accept@Seller("Ok to buy chips for " + price)
-                [details(invoice)]
-                println@Console( "Received "+invoice+" from Shipper!")()}
-            } else {
-            println@Console( "price not lower than 20")()
-            reject@Seller("Not ok to buy chips for " + price)
+    main {
+        ask@Seller("chips")
+            {[quote(price)]{
+                if (price <20) {
+                    println@Console( "price lower than 20")()
+                    accept@Seller("Ok to buy chips for " + price)
+                    [details(invoice)]
+                    println@Console( "Received "+invoice+" from Shipper!")()
+                } else {
+                println@Console( "price not lower than 20")()
+                reject@Seller("Not ok to buy chips for " + price)
+                }
             }
-        }
+            }
+    } 
 }
