@@ -48,7 +48,7 @@ service BuyerService {
                         [details(invoice)]
                         println@Console( "Received "+invoice+" from Shipper1!")()
                     } else {
-                    println@Console( "price not lower than 20")()
+                    println@Console( "None of the prices are lower than 20")()
                     reject@Seller1("Not ok to buy chips for " + price1)
                     }
                     
@@ -60,7 +60,7 @@ service BuyerService {
                         [details(invoice)]
                         println@Console( "Received "+invoice+" from Shipper2!")()
                     } else {
-                    println@Console( "price not lower than 20")()
+                    println@Console( "None of the prices are lower than 20")()
                     reject@Seller2("Not ok to buy chips for " + price2)
                     }
                 }

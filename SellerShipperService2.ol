@@ -28,11 +28,7 @@ service SellerService1 {
 
 
     main {
-        [ask(item)(15)]{
-            response=16
-            // if (item == "chips") {response=15}
-            // else {response=0}
-        }
+        [ask(item)(21)]
         [accept(item)]{
             order@SellerShipper(item)}
         [reject(item)]
