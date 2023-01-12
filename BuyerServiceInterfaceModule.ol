@@ -19,6 +19,9 @@ interface BuyerShipperInterface {
 }
 
 interface BuyerSellerInterface {
-    OneWay:
-        quote (int)
+   // OneWay:
+   //     quote (int)
+    RequestResponse:
+        quote (string)(int)
+
 }

@@ -28,11 +28,13 @@ service SellerService {
 
 
     main {
-        [ask(item)]{
-            quote@Buyer(15)
-            [accept(item)]{
-                order@SellerShipper(item)}
-            [reject(item)]
+        [ask(item)(response)]{
+            if (item == "chips") {response=15}
+            else {response=0}
         }
+        //quote@Buyer(15)
+        [accept(item)]{
+            order@SellerShipper(item)}
+        [reject(item)]
     } 
 }

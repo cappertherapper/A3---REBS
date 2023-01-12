@@ -36,7 +36,8 @@ interface SellerShipperInterface {
 
 interface SellerInterface {
     OneWay:
-        ask( string ),
         accept( string ),
-        reject( string )        
+        reject( string )
+    RequestResponse:
+        ask(string)(int)
 }

@@ -38,7 +38,8 @@ service BuyerService {
 
     main {
 
-        ask@Seller1("chips"){[quote(price1)]} | ask@Seller2("chips"){[quote(price2)]}
+        ask@Seller1("chips")(price1)
+        ask@Seller2("chips")(price2)
             {
                 if (price1 <= price2) {
                     reject@Seller2("Not ok to buy chips for " + price)
