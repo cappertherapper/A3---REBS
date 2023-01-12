@@ -28,7 +28,7 @@ service SellerService1 {
 
 
     main {
-        [ask(item)(21)]
+        [ask(item)(17)]
         [accept(item)]{
             order@SellerShipper(item)}
         [reject(item)]

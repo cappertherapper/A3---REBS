@@ -39,7 +39,8 @@ service BuyerService {
     main {
 
         ask@Seller1("chips")(price1) | ask@Seller2("chips")(price2)
-            {
+            {                       
+                println@Console( "Seller1 price: "+price1+" Seller2 price:"+price2)()
                 if (price1 <= price2) {
                     reject@Seller2("Not ok to buy chips for " + price2)
                     if (price1 <20) {
