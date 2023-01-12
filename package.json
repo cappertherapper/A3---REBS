@@ -1,0 +1,24 @@
+{
+  "name": "a3",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.ol",
+  "repo": "",
+  "keywords": [],
+  "author": "Dorph",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon jolie main.ol"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "jolie": {
+    "dependencies": {},
+    "maven": {
+      "dependencies": {},
+      "indirectDependencies": {}
+    }
+  }
+}
