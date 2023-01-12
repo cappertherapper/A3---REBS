@@ -4,6 +4,7 @@ from BuyerServiceInterfaceModule import BuyerShipperInterface, BuyerSellerInterf
 
 include "console.iol"
 
+
 service BuyerService {
     execution{ single }
 

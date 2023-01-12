@@ -28,5 +28,10 @@ service SellerService {
         interfaces: BuyerSellerInterface
     }
 
-    //main {} 
+    main {
+        [ask(product)]{
+            Quote@Buyer(10)
+        }
+
+    } 
 }
