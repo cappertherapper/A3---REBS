@@ -38,8 +38,8 @@ service BuyerService {
 
     main {
 
-        ask@Seller1("chips")(price1)
-        ask@Seller2("chips")(price2)
+        ask@Seller1(price1)("chips")
+        ask@Seller2(price2)("chips")
             {
                 if (price1 <= price2) {
                     reject@Seller2("Not ok to buy chips for " + price2)
