@@ -28,9 +28,10 @@ service SellerService1 {
 
 
     main {
-        [ask(item)(response)]{
-            if (item == "chips") {response=15}
-            else {response=0}
+        [ask(item)(16)]{
+            response=15
+            // if (item == "chips") {response=15}
+            // else {response=0}
         }
         //quote@Buyer(15)
         [accept(item)]{

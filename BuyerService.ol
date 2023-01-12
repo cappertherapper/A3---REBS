@@ -38,8 +38,7 @@ service BuyerService {
 
     main {
 
-        ask@Seller1(price1)("chips")
-        ask@Seller2(price2)("chips")
+        ask@Seller1("chips")(price1) | ask@Seller2("chips")(price2)
             {
                 if (price1 <= price2) {
                     reject@Seller2("Not ok to buy chips for " + price2)
@@ -62,7 +61,7 @@ service BuyerService {
                         println@Console( "Received "+invoice+" from Shipper2!")()
                     } else {
                     println@Console( "price not lower than 20")()
-                    reject@Seller2("Not ok to buy chips for " + pric2e)
+                    reject@Seller2("Not ok to buy chips for " + price2)
                     }
                 }
             }

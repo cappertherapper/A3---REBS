@@ -39,5 +39,5 @@ interface SellerInterface {
         accept( string ),
         reject( string )
     RequestResponse:
-        ask(int)(string)
+        ask(string)(int)
 }
