@@ -1,12 +1,12 @@
 
-type QuoteRequest: void {
-    item: string
-}
+// type QuoteRequest: void {
+//     item: string
+// }
+// type OrderRequest: void {
+
+// }
 type QuoteResponse: void {
     price: int 
-}
-type OrderRequest: void {
-
 }
 type ResponseDetails: void {
     invoice: string
@@ -15,10 +15,10 @@ type ResponseDetails: void {
 
 interface BuyerShipperInterface {
     OneWay:
-        details(ResponseDetails)
+        details(string)
 }
 
 interface BuyerSellerInterface {
     OneWay:
-        quote (QuoteResponse)
+        quote (int)
 }

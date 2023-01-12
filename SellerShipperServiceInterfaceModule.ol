@@ -1,6 +1,4 @@
-type AskRequest: void {
-    product: string
-}
+type AskRequest {product: string}
 
 type OrderRequest: void {
     product: string
@@ -33,12 +31,12 @@ type RejectRequest: void {
 
 interface SellerShipperInterface {
     OneWay:
-        order(OrderRequest)
+        order(string)
 }
 
 interface SellerInterface {
     OneWay:
-        ask( AskRequest ),
-        accept( AcceptRequest ),
-        reject( RejectRequest )        
+        ask( string ),
+        accept( string ),
+        reject( string )        
 }

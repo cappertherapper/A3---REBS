@@ -1,5 +1,4 @@
 from SellerShipperServiceInterfaceModule import SellerInterface
-
 from BuyerServiceInterfaceModule import BuyerShipperInterface, BuyerSellerInterface
 
 include "console.iol"
@@ -9,7 +8,7 @@ service BuyerService {
     execution{ single }
 
     outputPort Seller1 {
-        location: "socket://localhost:8000"
+        location: "socket://localhost:8100"
         protocol: http { format = "json" }
         interfaces: SellerInterface
     }

@@ -1,11 +1,11 @@
-from SellerShipperServiceInterfaceModule import SellerInterface
+from SellerShipperServiceInterfaceModule import SellerShipperInterface
 
-from BuyerServiceInterfaceModule import BuyerShipperInterface, BuyerSellerInterface
+from BuyerServiceInterfaceModule import BuyerShipperInterface
 
 include "console.iol"
 service ShipperService {
     execution{ single }
-
+//8010 - 8001
     inputPort SellerShipper {
         location: "socket://localhost:8010"
         protocol: http { format = "json" }
