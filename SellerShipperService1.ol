@@ -29,7 +29,7 @@ service SellerService1 {
 
     main {
         [ask(item)]{
-            quote@Buyer(15)
+            quote@Buyer(18)
             [accept(item)]{
                 order@SellerShipper(item)}
             [reject(item)]

@@ -38,32 +38,34 @@ service BuyerService {
 
     main {
 
-        ask@Seller1("chips"){[quote(price1)]} | ask@Seller2("chips"){[quote(price2)]}
+        ask@Seller1("chips")
+        ask@Seller2("chips")
+        [quote(price2)] | [quote(price1)]
             {
                 if (price1 <= price2) {
-                    reject@Seller2("Not ok to buy chips for " + price)
+                    reject@Seller2("Not ok to buy chips for " + price2)
                     if (price1 <20) {
-                        println@Console( "price lower than 20")()
+                        println@Console( "price lower than 20 Shipper1")()
                         accept@Seller1("Ok to buy chips for " + price1)
                         [details(invoice)]
                         println@Console( "Received "+invoice+" from Shipper1!")()
                     } else {
                     println@Console( "price not lower than 20")()
-                    reject@Seller1("Not ok to buy chips for " + price)
+                    reject@Seller1("Not ok to buy chips for " + price1)
                     }
                     
                 } else {
-                    reject@Seller1("Not ok to buy chips for " + price)
-                    if (price <20) {
-                        println@Console( "price lower than 20")()
-                        accept@Seller2("Ok to buy chips for " + price)
+                    reject@Seller1("Not ok to buy chips for " + price1)
+                    if (price2 <20) {
+                        println@Console( "price lower than 20 Shipper2")()
+                        accept@Seller2("Ok to buy chips for " + price2)
                         [details(invoice)]
                         println@Console( "Received "+invoice+" from Shipper2!")()
                     } else {
                     println@Console( "price not lower than 20")()
-                    reject@Seller2("Not ok to buy chips for " + price)
+                    reject@Seller2("Not ok to buy chips for " + price2)
                     }
                 }
             }
-    } 
+    }
 }
