@@ -1,24 +1,32 @@
 type AskRequest: void {
-    term[1,*]: int
+    item: string
 }
 
-type AcceptResponse: void {
-    minuend: int
-    subtraend: int
+type AcceptRequest: void {
+    price: int
 }
 
-type RejectResponse: void {
-    factor*: double
+
+type RejectRequest: void {
+    price: int
 }
 
+type DetailsRequest: void { //i tvivl
+    invoice: int
+}
+
+type DetailsResponse: void { //i tvivl
+    invoice: int
+}
 
 interface BuyerShipperInterface {
     RequestResponse:
+        details(DetailsRequest)(DetailsRequest)
 }
 
 interface BuyerSellerInterface {
     RequestResponse:
-        ask( AskRequest )( int ),
-        accept( AcceptResponse )( int ),
-        reject( RejectResponse )( double ),
+        ask( AskRequest )( string ),
+        accept( AcceptRequest )( bool ),
+        reject( RejectRequest )( bool ),
 }
