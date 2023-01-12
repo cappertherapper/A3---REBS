@@ -1,14 +1,13 @@
-from SellerShipperServiceInterfaceModule import SellerInterface
+from SellerShipperServiceInterfaceModule import SellerInterface, SellerShipperInterface
 
 from BuyerServiceInterfaceModule import BuyerShipperInterface, BuyerSellerInterface
 
 include "console.iol"
 
 
-
 service SellerService {
     execution{ single }
-
+// 8002 - 8010 - 8000
     outputPort Buyer {
         location: "socket://localhost:8002"
         protocol: http { format = "json" }
@@ -21,7 +20,7 @@ service SellerService {
     }
 
     inputPort BuyerSeller {
-        location: "socket://localhost:8000"
+        location: "socket://localhost:8100"
         protocol: http { format = "json" }
         interfaces: SellerInterface
     }
@@ -29,10 +28,11 @@ service SellerService {
 
 
     main {
-        [ask(product)]{
+        [ask(item)]{
             quote@Buyer(15)
-            [accept(response)]{Order@SellerShipper(response)}
-            [reject(response)]{}
+            [accept(item)]{
+                order@SellerShipper(item)}
+            [reject(item)]
         }
     } 
 }
