@@ -7,7 +7,6 @@ include "console.iol"
 
 service SellerService1 {
     execution{ concurrent }
-// 8002 - 8010 - 8000
     outputPort Buyer {
         location: "socket://localhost:8222"
         protocol: http { format = "json" }
